@@ -46,6 +46,9 @@ resource "aws_s3_bucket_acl" "bucket" {
 }
 
 resource "aws_s3_bucket_policy" "policy" {
+  depends_on = [
+    aws_s3_bucket_acl.bucket
+  ]
   bucket = aws_s3_bucket.bucket.id
   policy = <<EOF
 {
